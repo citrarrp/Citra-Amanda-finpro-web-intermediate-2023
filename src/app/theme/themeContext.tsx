@@ -30,7 +30,9 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 export const useTheme = (): ThemeContextProps => {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error(
+      "Untuk menggunakan useTheme, harus digunakan bersama ThemeProvider"
+    );
   }
   return context;
 };

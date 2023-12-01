@@ -1,7 +1,5 @@
-"use client";
 import React, { useState, useEffect } from "react";
 import MovieCard from "components/movieCard";
-import { useTheme } from "app/theme/themeContext";
 
 type TMovie = {
   id: number;
@@ -13,14 +11,14 @@ type TMovie = {
   poster_path: string;
 };
 
-const PopularMovie = () => {
+const MovieList = () => {
   const [movies, setMovies] = useState<TMovie[]>([]);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_URL_API}/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+          `${process.env.NEXT_PUBLIC_URL_API}/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
         );
         const data = await response.json();
         setMovies(data.results);
@@ -32,22 +30,15 @@ const PopularMovie = () => {
     fetchMovies();
   }, []);
 
-  const { isDarkMode } = useTheme();
-
   return (
-    <div
-      className={`
-      ${isDarkMode ? "bg-bgdark text-white" : "bg-white text-light"}`}
-    >
-      <div className="mx-[30px] my-[30px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 h-auto">
-          {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
+    <div className="pb-30">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 h-auto m-20">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
       </div>
     </div>
   );
 };
 
-export default PopularMovie;
+export default MovieList;

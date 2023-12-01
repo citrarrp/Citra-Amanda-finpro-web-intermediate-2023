@@ -3,7 +3,7 @@ import React from "react";
 import { Poppins } from "next/font/google";
 import Navbar from "components/navbar";
 import { ThemeProvider } from "./theme/themeContext";
-import "./globals.css";
+import "app/globals.css";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -11,8 +11,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Finding Movie",
-  description: "Website yang menyediakan informasi daftar film...",
+  title: "FindingMovie",
+  description:
+    "Final Project Web Intermediete : Website yang menyediakan informasi berbagai film yang diambil dari TMDb API",
 };
 
 export default function RootLayout({

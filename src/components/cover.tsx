@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; //npm install react-slick slick-carousel
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Rubik_Mono_One } from "next/font/google";
+import { Nova_Square, Rubik_Mono_One } from "next/font/google";
 import { FaFire } from "react-icons/fa";
 
 type TMovie = {
@@ -16,11 +16,10 @@ type TMovie = {
   poster_path: string;
 };
 
-const rubik = Rubik_Mono_One({
+const NovaSquare = Nova_Square({
   weight: ["400"],
   subsets: ["latin"],
 });
-
 const TrendingMovie = () => {
   const [movies, setMovies] = useState<TMovie[]>([]);
 
@@ -28,7 +27,7 @@ const TrendingMovie = () => {
     const fetchMovies = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+          `${process.env.NEXT_PUBLIC_URL_API}/trending/movie/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
         );
         const data = await response.json();
         setMovies(data.results);
@@ -43,7 +42,7 @@ const TrendingMovie = () => {
   const sliderSettings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 700,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -61,18 +60,29 @@ const TrendingMovie = () => {
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className={`text-center relative w-full h-64 ${rubik.className}`}
+            className={`relative w-full h-80 ${NovaSquare.className}`}
           >
-            <h2 className="absolute top-1/2 left-1/2 text-bold text-black">
-              {movie.title}
-            </h2>
-            <Image
-              src={`${process.env.NEXT_PUBLIC_URL_POSTER}${movie.poster_path}`}
-              alt={movie.title}
-              className="object-cover rounded-md"
-              width={1600}
-              height={900}
-            />
+            <div
+              className="absolute inset-0"
+              style={{
+                filter: "blur(2px)",
+              }}
+            >
+              <Image
+                src={`${process.env.NEXT_PUBLIC_URL_POSTER}${movie.poster_path}`}
+                alt={movie.title}
+                className="object-cover w-full h-full mx-auto rounded-md"
+                layout="fill"
+              />
+            </div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white w-full text-center">
+              <h2
+                className="text-bold text-white text-2xl"
+                style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+              >
+                {movie.title}
+              </h2>
+            </div>
           </div>
         ))}
       </Slider>

@@ -21,6 +21,7 @@ const config: Config = {
       colors: {
         dark: "#003871",
         light: "#f2969b",
+        bgdark: "#001d3a",
       },
       fontWeight: {
         normal: "400",
@@ -32,6 +33,17 @@ const config: Config = {
       borderColor: {
         dark: "#003871",
         light: "#f2969b",
+      },
+      boxShadow: {
+        xl: "0 10px 60px -10px rgba(0, 56, 113, 0.75)",
+        "2xl": "0 10px 60px -10px rgba(242, 150, 155, 0.75)",
+      },
+      fontSize: {
+        sm: "0.800rem",
+        md: "0.9rem",
+        lg: "1.125rem",
+        xl: "1.25rem",
+        "2xl": "2rem",
       },
     },
   },
