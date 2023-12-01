@@ -30,7 +30,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/movies/[movieId]/pa"
+    "src/app/movies/[movieId]/page"
   ],
   "exclude": ["node_modules"]
 }

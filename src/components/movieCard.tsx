@@ -21,7 +21,6 @@ interface TMovieCard {
 
 const MovieCard = ({ movie, cari }: TMovieCard) => {
   const { isDarkMode } = useTheme();
-  console.log(isDarkMode);
 
   return (
     <div

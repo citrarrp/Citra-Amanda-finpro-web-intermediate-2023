@@ -1,5 +1,7 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import MovieCard from "components/movieCard";
+import LoadingPage from "components/loading";
 
 type TMovie = {
   id: number;
@@ -32,6 +34,10 @@ const MovieList = () => {
 
     fetchMovies();
   }, []);
+
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div className="px-30 py-30">

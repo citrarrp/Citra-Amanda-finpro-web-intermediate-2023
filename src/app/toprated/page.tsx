@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import MovieCard from "components/movieCard";
 import { useTheme } from "app/theme/themeContext";
+import LoadingPage from "components/loading";
+import ErrorPage from "app/error";
+import { ThemeProvider } from "app/theme/themeContext";
 
 type TMovie = {
   id: number;
@@ -15,24 +18,32 @@ type TMovie = {
 
 const TopRatedMovie = () => {
   const [movies, setMovies] = useState<TMovie[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
+        setLoading(true);
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_URL_API}/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
         );
         const data = await response.json();
         setMovies(data.results);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching movies:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchMovies();
   }, []);
 
-  const { isDarkMode } = useTheme();
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div
@@ -42,7 +53,7 @@ const TopRatedMovie = () => {
       <div className="mx-[30px] my-[30px]">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 h-auto">
           {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <MovieCard key={movie.id} movie={movie} cari="toprated" />
           ))}
         </div>
       </div>

@@ -19,7 +19,7 @@ interface HomeProps {
   movies: TMovie[];
 }
 
-const Home = ({}: HomeProps) => {
+const Home = () => {
   const { isDarkMode } = useTheme();
 
   return (

@@ -1,8 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import MovieDetail from "components/movieDetail";
-import { ThemeProvider } from "app/theme/themeContext";
 import Metadata from "components/metadata";
+import LoadingPage from "components/loading";
+import NotFoundPage from "app/notfound";
+import ErrorPage from "app/error";
 
 type TMovie = {
   id: number;
@@ -26,6 +28,8 @@ interface MovieIdProps {
 
 const MovieTopRatedId = ({ params: { movieTopratedId } }: MovieIdProps) => {
   const [movie, setMovie] = useState<TMovie | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -36,7 +40,15 @@ const MovieTopRatedId = ({ params: { movieTopratedId } }: MovieIdProps) => {
         const data = await response.json();
         setMovie(data);
       } catch (error) {
+        setLoading(false);
         console.error("Error fetching movie:", error);
+        if (typeof error === "string") {
+          setError(error);
+        } else {
+          setError("An error occurred while fetching the movie.");
+        }
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -45,8 +57,16 @@ const MovieTopRatedId = ({ params: { movieTopratedId } }: MovieIdProps) => {
     }
   }, [movieTopratedId]);
 
+  if (loading) {
+    return <LoadingPage />;
+  }
+
+  if (error) {
+    return <ErrorPage message={error} />;
+  }
+
   if (!movie) {
-    return <p>a</p>;
+    return <NotFoundPage />;
   }
 
   const keywords: string[] = [
