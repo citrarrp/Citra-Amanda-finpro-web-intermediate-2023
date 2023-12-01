@@ -24,7 +24,11 @@ const MovieDetail = ({ movie }: TMovieCard) => {
   const { isDarkMode } = useTheme();
 
   return (
-    <div className="container mx-auto p-8">
+    <div
+      className={`container mx-auto p-8 ${
+        isDarkMode ? "bg-light" : "bg-dark"
+      }md:w-2/3 flex flex-col space-y-4`}
+    >
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0">
         <div className="md:w-1/3 relative">
           <div className="shadow-xl bg-white bg-opacity-50 p-4 rounded-md absolute inset-0 transition-all duration-300 ease-in-out hover:backdrop-blur-lg hover:bg-opacity-75">
@@ -48,7 +52,7 @@ const MovieDetail = ({ movie }: TMovieCard) => {
             {movie.genres.map((genre) => genre.name).join(", ")}
           </p>
           <p className="">{movie.runtime} minutes</p>
-          <div className="absolute flex flew-row bottom-0 right-0 gap-1 p-3 mr-2">
+          <div className="absolute flex flew-row gap-1 p-3 mr-2">
             {isDarkMode ? (
               <FaStar className="colors-bgdark" />
             ) : (

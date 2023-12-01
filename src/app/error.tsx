@@ -11,7 +11,7 @@ const ErrorPage = ({ message }: ErrorPageProps) => {
     <div className="flex flex-col items-center justify-center min-h-screen">
       <p className="text-red-500">Error: {message}</p>
       <Link href="/" className="bg-[#DB2887] px-3 py-1 rounded-xl mt-4">
-        Go back to home
+        Kembali ke Halaman Utama
       </Link>
     </div>
   );

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import MovieDetail from "components/movieDetail";
 import { ThemeProvider } from "app/theme/themeContext";
+import Metadata from "components/metadata";
 
 type TMovie = {
   id: number;
@@ -14,6 +15,7 @@ type TMovie = {
   genres: Array<{ id: number; name: string }>;
   runtime: number;
   homepage: string;
+  tagline: string;
 };
 
 interface MovieIdProps {
@@ -47,10 +49,20 @@ const MovieTopRatedId = ({ params: { movieTopratedId } }: MovieIdProps) => {
     return <p>a</p>;
   }
 
+  const keywords: string[] = [
+    ...movie.genres.map((genre) => genre.name),
+    movie.tagline,
+  ];
+
   return (
-    <ThemeProvider>
-      <MovieDetail movie={movie} />
-    </ThemeProvider>
+    <>
+      <Metadata
+        title={movie.title}
+        description={movie.overview}
+        keywords={keywords}
+      />
+      <MovieDetail movie={movie} />;
+    </>
   );
 };
 

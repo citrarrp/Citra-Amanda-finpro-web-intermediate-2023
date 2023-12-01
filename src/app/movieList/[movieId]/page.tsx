@@ -47,11 +47,7 @@ const MovieId = ({ params: { movieId } }: MovieIdProps) => {
     return <p>a</p>;
   }
 
-  return (
-    <ThemeProvider>
-      <MovieDetail movie={movie} />
-    </ThemeProvider>
-  );
+  return <MovieDetail movie={movie} />;
 };
 
 export default MovieId;

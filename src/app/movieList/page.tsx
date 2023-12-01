@@ -34,7 +34,7 @@ const MovieList = () => {
   }, []);
 
   return (
-    <div className="px-30 py-30 bottom-0">
+    <div className="px-30 py-30">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 h-auto m-20">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} cari="movieList" />
