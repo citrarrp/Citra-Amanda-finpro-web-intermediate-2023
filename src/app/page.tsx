@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import MovieList from "app/movies/page";
+import MovieList from "app/movieList/page";
 import TrendingMovie from "components/cover";
 import { useTheme } from "app/theme/themeContext";
+import Metadata from "components/metadata";
 
 type TMovie = {
   id: number;
@@ -22,15 +23,20 @@ const Home = ({}: HomeProps) => {
   const { isDarkMode } = useTheme();
 
   return (
-    <header
-      className={`
-    ${isDarkMode ? "bg-bgdark text-white" : "bg-white text-light"}`}
-    >
-      <div>
+    <main>
+      <Metadata
+        title="Finding Movie"
+        description="Jelajahi Kumpulan Movie Terpopuler, Terbaru, Trending, dan Top Rated"
+        keywords={["Movie", "Next JS", "Hiburan", "Final Project"]}
+      />
+      <div
+        className={`
+      ${isDarkMode ? "bg-bgdark text-white" : "bg-white text-light"}`}
+      >
         <TrendingMovie />
         <MovieList />
       </div>
-    </header>
+    </main>
   );
 };
 

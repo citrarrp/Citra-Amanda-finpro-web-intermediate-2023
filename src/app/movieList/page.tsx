@@ -13,15 +13,18 @@ type TMovie = {
 
 const MovieList = () => {
   const [movies, setMovies] = useState<TMovie[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
+        setLoading(true);
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_URL_API}/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
         );
         const data = await response.json();
         setMovies(data.results);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
@@ -31,10 +34,10 @@ const MovieList = () => {
   }, []);
 
   return (
-    <div className="pb-30">
+    <div className="px-30 py-30 bottom-0">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 h-auto m-20">
         {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard key={movie.id} movie={movie} cari="movieList" />
         ))}
       </div>
     </div>

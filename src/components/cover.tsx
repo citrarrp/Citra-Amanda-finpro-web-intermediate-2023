@@ -72,6 +72,7 @@ const TrendingMovie = () => {
                 src={`${process.env.NEXT_PUBLIC_URL_POSTER}${movie.poster_path}`}
                 alt={movie.title}
                 className="object-cover w-full h-full mx-auto rounded-md"
+                loading="lazy"
                 layout="fill"
               />
             </div>
