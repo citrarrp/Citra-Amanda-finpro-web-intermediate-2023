@@ -34,7 +34,9 @@ const MovieDetail = ({ movie }: TMovieCard) => {
 
   return (
     <div
-      className={`${isDarkMode ? "bg-bgdark" : "bg-white"} justify-center p-50`}
+      className={`${
+        isDarkMode ? "bg-bgdark" : "bg-white"
+      } justify-center p-50 max-h-screen`}
     >
       <div className="items-center justify-center max-w-screen-xl p-10 mx-auto">
         <div className="">
@@ -61,7 +63,7 @@ const MovieDetail = ({ movie }: TMovieCard) => {
             <div
               className={` ${
                 isDarkMode ? "text-white" : "text-light"
-              } flex flex-col space-y-4 md:w-2/3 w-1/2`}
+              } flex flex-col space-y-4 md:w-2/3 w-auto xl:mx-auto sm:mx-5 md:mx-auto `}
             >
               <h1 className="text-3xl font-bold">{movie.title}</h1>
               <div className="flex flex-row items-center gap-6 mr-2">
@@ -90,7 +92,7 @@ const MovieDetail = ({ movie }: TMovieCard) => {
                   <p className="">{movie.runtime} minutes</p>
                 </div>
               </div>
-              <div className="flex flex-row gap-3">
+              <div className="flex xl:flex-row sm:flex-col md:flex-row gap-3">
                 {movie.genres.map((genre, index) => (
                   <p
                     key={index}
@@ -109,7 +111,9 @@ const MovieDetail = ({ movie }: TMovieCard) => {
                   href={movie.homepage}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${isDarkMode ? "text-light" : "text-dark"}`}
+                  className={`${
+                    isDarkMode ? "text-light" : "text-dark"
+                  } sm:text-sm md:text-md xl:text-xl`}
                 >
                   {movie.homepage}
                 </Link>
