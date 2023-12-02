@@ -1,10 +1,4 @@
-========================================================================
-||                                                                                                                                                     ||
-||           FINAL PROJECT STUDY CLUB KSM ANDROID KELAS WEB INTERMEDIETE          ||
-||                                                                                                                                                     ||
-||                CITRA RAHMAWATI RATU PERTIWI  &  AMANDA DEVIA KURNIAWAN                 ||
-||                                                                                                                                                     ||
-========================================================================
+FINAL PROJECT STUDY CLUB KSM ANDROID KELAS WEB INTERMEDIETE - CITRA RAHMAWATI RATU PERTIWI  &  AMANDA DEVIA KURNIAWAN            
 
 
 
