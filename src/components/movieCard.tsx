@@ -28,18 +28,18 @@ const MovieCard = ({ movie, cari }: TMovieCard) => {
         isDarkMode ? "bg-dark hover:shadow-xl" : "bg-light hover:shadow-2xl"
       } bg-opacity-10`}
     >
-      <div className="flex flex-col items-start left-1/2 px-5 pt-5 rounded-lg h-full">
+      <div className="flex flex-col items-start h-full px-5 pt-5 rounded-lg left-1/2">
         <div className="relative ">
           <Image
             src={`${process.env.NEXT_PUBLIC_URL_POSTER}${movie.poster_path}`}
             alt={movie.title}
-            className="border-black object-cover rounded-lg mb-2"
+            className="object-cover mb-2 border-black rounded-lg"
             loading="lazy"
             width={300}
             height={100}
           />
         </div>
-        <div className="flex flex-grow flex-row items-center justify-center mb-1">
+        <div className="flex flex-row items-center justify-center flex-grow mb-1">
           <div className="text-left w-50">
             <Link href={`/${cari}/${movie.id}`}>
               <h2
@@ -50,15 +50,15 @@ const MovieCard = ({ movie, cari }: TMovieCard) => {
                 {movie.title}
               </h2>
             </Link>
-            <p className="text-sm font-normal mb-2">{movie.release_date}</p>
+            <p className="mb-2 text-sm font-normal">{movie.release_date}</p>
           </div>
-          <div className="absolute flex flew-row bottom-0 right-0 gap-1 p-3 mr-2">
+          <div className="absolute bottom-0 right-0 flex gap-1 p-3 mr-2 flew-row">
             {isDarkMode ? (
               <FaStar className="colors-bgdark"></FaStar>
             ) : (
               <FaStar className="text-light"></FaStar>
             )}
-            <p className="font-bold text-sm">{movie.vote_average.toFixed(1)}</p>
+            <p className="text-sm font-bold">{movie.vote_average.toFixed(1)}</p>
           </div>
         </div>
       </div>
