@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useTheme } from "app/theme/themeContext";
 import { FaStar } from "react-icons/fa";
+import Link from "next/link";
 
 type TMovie = {
   id: number;
@@ -29,9 +30,9 @@ const MovieDetail = ({ movie }: TMovieCard) => {
         isDarkMode ? "bg-light" : "bg-dark"
       }md:w-2/3 flex flex-col space-y-4`}
     >
-      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0">
-        <div className="md:w-1/3 relative">
-          <div className="shadow-xl bg-white bg-opacity-50 p-4 rounded-md absolute inset-0 transition-all duration-300 ease-in-out hover:backdrop-blur-lg hover:bg-opacity-75">
+      <div className="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0">
+        <div className="relative md:w-1/3">
+          <div className="inset-0 p-4 transition-all duration-300 ease-in-out bg-white bg-opacity-50 rounded-md shadow-xl hover:backdrop-blur-lg hover:bg-opacity-75">
             <Image
               src={`${process.env.NEXT_PUBLIC_URL_POSTER}${movie.poster_path}`}
               alt={movie.title}
@@ -47,23 +48,30 @@ const MovieDetail = ({ movie }: TMovieCard) => {
           }md:w-2/3 flex flex-col space-y-4`}
         >
           <h1 className="text-3xl font-bold">{movie.title}</h1>
-          <p className="">{movie.release_date}</p>
+          <p>
+            Release Date :{" "}
+            <span className="font-semibold">{movie.release_date}</span>
+          </p>
           <p className="">
             {movie.genres.map((genre) => genre.name).join(", ")}
           </p>
           <p className="">{movie.runtime} minutes</p>
-          <div className="absolute flex flew-row gap-1 p-3 mr-2">
+          <div className="flex items-center gap-1 mr-2 flew-row">
             {isDarkMode ? (
-              <FaStar className="colors-bgdark" />
+              <FaStar size={30} className="colors-bgdark" />
             ) : (
-              <FaStar className="text-light" />
+              <FaStar size={30} className="text-light" />
             )}
-            <p className="font-bold text-sm">{movie.vote_average}</p>
+            <p className="text-lg font-bold">{movie.vote_average}</p>
           </div>
           <p className="">
-            <a href={movie.homepage} target="_blank" rel="noopener noreferrer">
+            <Link
+              href={movie.homepage}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {movie.homepage}
-            </a>
+            </Link>
           </p>
           <p className="">{movie.overview}</p>
         </div>

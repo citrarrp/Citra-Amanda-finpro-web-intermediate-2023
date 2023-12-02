@@ -5,20 +5,6 @@ import TrendingMovie from "components/cover";
 import { useTheme } from "app/theme/themeContext";
 import Metadata from "components/metadata";
 
-type TMovie = {
-  id: number;
-  title: string;
-  release_date: string;
-  popularity: number;
-  vote_average: number;
-  overview: string;
-  poster_path: string;
-};
-
-interface HomeProps {
-  movies: TMovie[];
-}
-
 const Home = () => {
   const { isDarkMode } = useTheme();
 

@@ -20,7 +20,6 @@ const MovieList = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        setLoading(true);
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_URL_API}/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
         );
@@ -28,6 +27,7 @@ const MovieList = () => {
         setMovies(data.results);
         setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.error("Error fetching movies:", error);
       }
     };
@@ -41,7 +41,7 @@ const MovieList = () => {
 
   return (
     <div className="px-30 py-30">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 h-auto m-20">
+      <div className="grid h-auto grid-cols-1 gap-2 m-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} cari="movieList" />
         ))}

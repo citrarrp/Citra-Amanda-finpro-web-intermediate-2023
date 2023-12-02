@@ -42,7 +42,7 @@ const PopularMovie = () => {
   }, []);
 
   if (loading) {
-    return <LoadingPage />;
+    return <h1 className="">Loading ...</h1>;
   }
 
   return (

@@ -3,6 +3,7 @@ import React from "react";
 import { Poppins } from "next/font/google";
 import Navbar from "components/navbar";
 import { ThemeProvider } from "./theme/themeContext";
+import "./globals.css";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700", "800", "900"],
