@@ -26,36 +26,38 @@ const Navbar = () => {
         />
       </div>
 
-      <div className="flex items-center border border-white rounded-full px-2 py-2 mb-2 lg:mb-0 lg:mr-5">
+      <div className="flex items-center px-2 py-2 mb-2 border border-white rounded-full lg:mb-0 lg:mr-5">
         <input
           type="text"
           placeholder="Search..."
-          className="border-none outline-none rounded-full ml-1 pl-3 pr-3 py-2 sm:w-auto md:w-64 lg:w-96"
+          className={`border-none outline-none rounded-full ml-1 pl-3 pr-3 py-2 sm:w-auto md:w-64 lg:w-96 ${
+            isDarkMode ? "text-dark" : "text-light"
+          }`}
         />
-        <FaSearch className="text-white ml-3 mr-2" />
+        <FaSearch className="ml-3 mr-2 text-white" />
       </div>
 
-      <div className="menu-column flex flex-col lg:flex-row space-x-0 lg:space-x-2 lg:ml-5 items-center lg:justify-center">
+      <div className="flex flex-col items-center space-x-0 menu-column lg:flex-row lg:space-x-2 lg:ml-5 lg:justify-center">
         <Link href="/" passHref>
-          <p className="relative inline-block px-0 mr-3 text-white text-decoration-none overflow-hidden py-1 group">
+          <p className="relative inline-block px-0 py-1 mr-3 overflow-hidden text-white text-decoration-none group">
             Home
             <span className="absolute w-full h-0.5 bg-white bottom-0 left-0 transform scale-x-0 origin-left transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
           </p>
         </Link>
         <Link href="/popular" passHref>
-          <p className="relative inline-block px-0 mr-3 text-white text-decoration-none overflow-hidden py-1 group">
+          <p className="relative inline-block px-0 py-1 mr-3 overflow-hidden text-white text-decoration-none group">
             Popular
             <span className="absolute w-full h-0.5 bg-white bottom-0 left-0 transform scale-x-0 origin-left transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
           </p>
         </Link>
         <Link href="/upcoming" passHref>
-          <p className="relative inline-block px-0 mr-3 text-white text-decoration-none overflow-hidden py-1 group">
+          <p className="relative inline-block px-0 py-1 mr-3 overflow-hidden text-white text-decoration-none group">
             Upcoming
             <span className="absolute w-full h-0.5 bg-white bottom-0 left-0 transform scale-x-0 origin-left transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
           </p>
         </Link>
         <Link href="/toprated" passHref>
-          <p className="relative inline-block px-0 mr-3 text-white text-decoration-none overflow-hidden py-1 group">
+          <p className="relative inline-block px-0 py-1 mr-3 overflow-hidden text-white text-decoration-none group">
             Top Rated
             <span className="absolute w-full h-0.5 bg-white bottom-0 left-0 transform scale-x-0 origin-left transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
           </p>
@@ -63,7 +65,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className="cursor-pointer px-5 sm:py-5 md:py-5 lg:py-0 justify-center"
+        className="justify-center px-5 cursor-pointer sm:py-5 md:py-5 lg:py-0"
         onClick={toggleDarkMode}
       >
         {isDarkMode ? (

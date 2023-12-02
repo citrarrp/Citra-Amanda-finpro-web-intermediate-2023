@@ -44,7 +44,13 @@ const PopularMovie = () => {
 
   if (loading) {
     return (
-      <h1 className="items-center justify-center text-3xl font-bold">...</h1>
+      <h1
+        className={`flex items-center justify-center h-screen text-xl my-auto font-bold text-center ${
+          isDarkMode ? "text-white" : "text-light"
+        }`}
+      >
+        Loading...
+      </h1>
     );
   }
 

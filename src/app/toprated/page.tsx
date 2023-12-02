@@ -4,7 +4,6 @@ import MovieCard from "components/movieCard";
 import { useTheme } from "app/theme/themeContext";
 import LoadingPage from "components/loading";
 import ErrorPage from "app/error";
-import { ThemeProvider } from "app/theme/themeContext";
 
 type TMovie = {
   id: number;

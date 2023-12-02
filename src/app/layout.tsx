@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "FindingMovie",
+  title: "Finding Movie",
   description:
     "Final Project Web Intermediete : Website yang menyediakan informasi berbagai film yang diambil dari TMDb API",
 };

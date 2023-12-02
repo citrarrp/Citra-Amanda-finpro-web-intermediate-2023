@@ -44,6 +44,7 @@ const config: Config = {
         lg: "1.125rem",
         xl: "1.25rem",
         "2xl": "2rem",
+        "4xl": "4rem",
       },
       backdropBlur: {
         xs: "2px",
