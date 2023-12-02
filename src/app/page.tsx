@@ -9,16 +9,16 @@ const Home = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <main>
+    <main
+      className={`
+    ${isDarkMode ? "bg-bgdark text-white" : "bg-white text-light"}`}
+    >
       <Metadata
         title="Finding Movie"
         description="Jelajahi Kumpulan Movie Terpopuler, Terbaru, Trending, dan Top Rated"
         keywords={["Movie", "Next JS", "Hiburan", "Final Project"]}
       />
-      <div
-        className={`
-      ${isDarkMode ? "bg-bgdark text-white" : "bg-white text-light"}`}
-      >
+      <div>
         <TrendingMovie />
         <MovieList />
       </div>

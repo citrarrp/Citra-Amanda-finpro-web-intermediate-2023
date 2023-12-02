@@ -4,7 +4,7 @@ import MovieDetail from "components/movieDetail";
 import Metadata from "components/metadata";
 import ErrorPage from "app/error";
 import LoadingPage from "components/loading";
-import NotFoundPage from "app/notfound";
+import NotFoundPage from "app/not-found";
 
 type TMovie = {
   id: number;

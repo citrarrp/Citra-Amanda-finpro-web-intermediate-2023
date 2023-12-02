@@ -26,7 +26,8 @@ const PopularMovie = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_URL_API}/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+          `${process.env.NEXT_PUBLIC_URL_API}/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+          { next: { revalidate: 3600 } }
         );
         const data = await response.json();
         setMovies(data.results);
@@ -42,7 +43,9 @@ const PopularMovie = () => {
   }, []);
 
   if (loading) {
-    return <h1 className="">Loading ...</h1>;
+    return (
+      <h1 className="items-center justify-center text-3xl font-bold">...</h1>
+    );
   }
 
   return (
@@ -50,8 +53,8 @@ const PopularMovie = () => {
       className={`
       ${isDarkMode ? "bg-bgdark text-white" : "bg-white text-light"}`}
     >
-      <div className="px-30 py-30">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 h-auto">
+      <div className="px-[30px] py-[50px]">
+        <div className="grid h-auto grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} cari="popular" />
           ))}

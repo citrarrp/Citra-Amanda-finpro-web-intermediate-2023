@@ -54,7 +54,7 @@ const MovieCard = ({ movie, cari }: TMovieCard) => {
           </div>
           <div className="absolute bottom-0 right-0 flex gap-1 p-3 mr-2 flew-row">
             {isDarkMode ? (
-              <FaStar className="colors-bgdark"></FaStar>
+              <FaStar className="text-white"></FaStar>
             ) : (
               <FaStar className="text-light"></FaStar>
             )}

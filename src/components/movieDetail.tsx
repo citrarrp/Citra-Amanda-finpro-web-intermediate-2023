@@ -23,57 +23,99 @@ interface TMovieCard {
 
 const MovieDetail = ({ movie }: TMovieCard) => {
   const { isDarkMode } = useTheme();
+  const formattedDate = new Date(movie.release_date).toLocaleDateString(
+    "id-ID",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }
+  );
 
   return (
     <div
-      className={`container mx-auto p-8 ${
-        isDarkMode ? "bg-light" : "bg-dark"
-      }md:w-2/3 flex flex-col space-y-4`}
+      className={`${isDarkMode ? "bg-bgdark" : "bg-white"} justify-center p-50`}
     >
-      <div className="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0">
-        <div className="relative md:w-1/3">
-          <div className="inset-0 p-4 transition-all duration-300 ease-in-out bg-white bg-opacity-50 rounded-md shadow-xl hover:backdrop-blur-lg hover:bg-opacity-75">
-            <Image
-              src={`${process.env.NEXT_PUBLIC_URL_POSTER}${movie.poster_path}`}
-              alt={movie.title}
-              width={200}
-              height={250}
-              className="rounded-md"
-            />
-          </div>
-        </div>
-        <div
-          className={`container mx-auto p-8 ${
-            isDarkMode ? "text-light" : "text-dark"
-          }md:w-2/3 flex flex-col space-y-4`}
-        >
-          <h1 className="text-3xl font-bold">{movie.title}</h1>
-          <p>
-            Release Date :{" "}
-            <span className="font-semibold">{movie.release_date}</span>
-          </p>
-          <p className="">
-            {movie.genres.map((genre) => genre.name).join(", ")}
-          </p>
-          <p className="">{movie.runtime} minutes</p>
-          <div className="flex items-center gap-1 mr-2 flew-row">
-            {isDarkMode ? (
-              <FaStar size={30} className="colors-bgdark" />
-            ) : (
-              <FaStar size={30} className="text-light" />
-            )}
-            <p className="text-lg font-bold">{movie.vote_average}</p>
-          </div>
-          <p className="">
-            <Link
-              href={movie.homepage}
-              target="_blank"
-              rel="noopener noreferrer"
+      <div className="items-center justify-center max-w-screen-xl p-10 mx-auto">
+        <div className="">
+          <div
+            className={`flex flex-col items-center gap-5 py-8 space-y-4 border rounded-md md:flex-row md:space-y-0 md:px-10 ${
+              isDarkMode ? "border-white" : "border-light"
+            }`}
+          >
+            <div className="w-auto md:w-1/3">
+              <Image
+                src={`${process.env.NEXT_PUBLIC_URL_POSTER}${movie.poster_path}`}
+                alt={movie.title}
+                width={250}
+                height={350}
+                className={`${
+                  isDarkMode
+                    ? "shadow-xl bg-opacity-90"
+                    : "shadow-2xl bg-opacity-90"
+                } transition-all duration-150 ease-in-out rounded-md hover:transform hover:scale-105 hover:rotate-[-2deg]`}
+                style={{ maxWidth: "100%", height: "auto" }}
+              ></Image>
+            </div>
+
+            <div
+              className={` ${
+                isDarkMode ? "text-white" : "text-light"
+              } flex flex-col space-y-4 md:w-2/3 w-1/2`}
             >
-              {movie.homepage}
-            </Link>
-          </p>
-          <p className="">{movie.overview}</p>
+              <h1 className="text-3xl font-bold">{movie.title}</h1>
+              <div className="flex flex-row items-center gap-6 mr-2">
+                <div className="flex flex-row gap-2">
+                  {isDarkMode ? (
+                    <FaStar size={25} className="text-white" />
+                  ) : (
+                    <FaStar size={25} className="text-light" />
+                  )}
+                  <p
+                    className={` ${
+                      isDarkMode ? "text-white" : "text-light"
+                    } font-bold text-xl`}
+                  >
+                    {movie.vote_average}
+                  </p>
+                </div>
+                <div>
+                  <p className="sm:text-sm md:text-md xl:text-xl">
+                    Release Date :
+                  </p>
+                  <p className="font-semibold">{formattedDate}</p>
+                </div>
+                <div>
+                  <p className="sm:text-sm md:text-md xl:text-xl">Runtime :</p>
+                  <p className="">{movie.runtime} minutes</p>
+                </div>
+              </div>
+              <div className="flex flex-row gap-3">
+                {movie.genres.map((genre, index) => (
+                  <p
+                    key={index}
+                    className={`px-2 py-1 border ${
+                      isDarkMode ? "border-white" : "border-light"
+                    } rounded-xl`}
+                  >
+                    {genre.name}
+                  </p>
+                ))}
+              </div>
+              <p className="">{movie.overview}</p>
+
+              <p className="">
+                <Link
+                  href={movie.homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${isDarkMode ? "text-light" : "text-dark"}`}
+                >
+                  {movie.homepage}
+                </Link>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

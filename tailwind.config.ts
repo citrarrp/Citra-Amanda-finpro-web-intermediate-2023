@@ -45,6 +45,15 @@ const config: Config = {
         xl: "1.25rem",
         "2xl": "2rem",
       },
+      backdropBlur: {
+        xs: "2px",
+      },
+      rotate: {
+        "10": "10deg",
+      },
+      scale: {
+        "105": "1.05",
+      },
     },
   },
   plugins: [],

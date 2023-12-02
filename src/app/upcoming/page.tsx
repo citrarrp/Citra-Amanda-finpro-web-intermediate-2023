@@ -4,7 +4,6 @@ import MovieCard from "components/movieCard";
 import { useTheme } from "app/theme/themeContext";
 import LoadingPage from "components/loading";
 import ErrorPage from "app/error";
-import { ThemeProvider } from "app/theme/themeContext";
 
 type TMovie = {
   id: number;
@@ -16,7 +15,7 @@ type TMovie = {
   poster_path: string;
 };
 
-const TopRatedMovie = () => {
+const UpcomingMovie = () => {
   const [movies, setMovies] = useState<TMovie[]>([]);
   const [loading, setLoading] = useState(true);
   const { isDarkMode } = useTheme();
@@ -26,7 +25,7 @@ const TopRatedMovie = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_URL_API}/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+          `${process.env.NEXT_PUBLIC_URL_API}/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
           { next: { revalidate: 3600 } }
         );
         const data = await response.json();
@@ -62,4 +61,4 @@ const TopRatedMovie = () => {
   );
 };
 
-export default TopRatedMovie;
+export default UpcomingMovie;

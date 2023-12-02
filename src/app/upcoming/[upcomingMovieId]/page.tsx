@@ -22,11 +22,11 @@ type TMovie = {
 
 interface MovieIdProps {
   params: {
-    movieTopratedId: number;
+    upcomingMovieId: number;
   };
 }
 
-const MovieTopRatedId = ({ params: { movieTopratedId } }: MovieIdProps) => {
+const MovieUpcomingId = ({ params: { upcomingMovieId } }: MovieIdProps) => {
   const [movie, setMovie] = useState<TMovie | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -35,7 +35,7 @@ const MovieTopRatedId = ({ params: { movieTopratedId } }: MovieIdProps) => {
     const fetchMovie = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_URL_API}/movie/${movieTopratedId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+          `${process.env.NEXT_PUBLIC_URL_API}/movie/${upcomingMovieId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
         );
         const data = await response.json();
         setMovie(data);
@@ -52,10 +52,10 @@ const MovieTopRatedId = ({ params: { movieTopratedId } }: MovieIdProps) => {
       }
     };
 
-    if (movieTopratedId) {
+    if (upcomingMovieId) {
       fetchMovie();
     }
-  }, [movieTopratedId]);
+  }, [upcomingMovieId]);
 
   if (loading) {
     return <LoadingPage />;
@@ -86,4 +86,4 @@ const MovieTopRatedId = ({ params: { movieTopratedId } }: MovieIdProps) => {
   );
 };
 
-export default MovieTopRatedId;
+export default MovieUpcomingId;

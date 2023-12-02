@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import MovieDetail from "components/movieDetail";
 import Metadata from "components/metadata";
 import ErrorPage from "app/error";
-import NotFoundPage from "app/notfound";
+import NotFoundPage from "app/not-found";
 
 type TMovie = {
   id: number;
@@ -65,12 +65,12 @@ const MovieId = ({ params: { movieId } }: MovieIdProps) => {
     return <p>Loading...</p>;
   }
 
-  if (error) {
-    return <ErrorPage message={error} />;
-  }
-
   if (!movie) {
     return <NotFoundPage />;
+  }
+
+  if (error) {
+    return <ErrorPage message={error} />;
   }
 
   const keywords: string[] = [
