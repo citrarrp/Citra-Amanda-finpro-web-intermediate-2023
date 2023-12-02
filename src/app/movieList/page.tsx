@@ -21,7 +21,11 @@ const MovieList = () => {
     const fetchMovies = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_URL_API}/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+          `${process.env.NEXT_PUBLIC_URL_API}/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+          {
+            cache: "no-store",
+            next: { revalidate: 3600 },
+          }
         );
         const data = await response.json();
         setMovies(data.results);
