@@ -26,7 +26,7 @@ const TopRatedMovie = () => {
         setLoading(true);
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_URL_API}/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
-          { cache: "no-store", next: { revalidate: 3600 } }
+          { cache: "no-store" }
         );
         const data = await response.json();
         setMovies(data.results);
