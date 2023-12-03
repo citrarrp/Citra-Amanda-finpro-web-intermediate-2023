@@ -36,7 +36,7 @@ const MovieDetail = ({ movie }: TMovieCard) => {
     <div
       className={`${
         isDarkMode ? "bg-bgdark" : "bg-white"
-      } justify-center p-50 max-h-screen`}
+      } justify-center p-50 min-h-screen`}
     >
       <div className="items-center justify-center max-w-screen-xl p-10 mx-auto">
         <div className="">
