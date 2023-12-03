@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import MovieDetail from "components/movieDetail";
 import Metadata from "components/metadata";
-import ErrorPage from "app/error";
 import NotFoundPage from "app/not-found";
+import Link from "next/link";
 
 type TMovie = {
   id: number;
@@ -70,7 +70,13 @@ const MovieId = ({ params: { movieId } }: MovieIdProps) => {
   }
 
   if (error) {
-    return <ErrorPage message={error} />;
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <Link href="/" className="px-3 py-1 mt-4 rounded-xl font-normal">
+          <p>Kembali ke Halaman Utama</p>
+        </Link>
+      </div>
+    );
   }
 
   const keywords: string[] = [

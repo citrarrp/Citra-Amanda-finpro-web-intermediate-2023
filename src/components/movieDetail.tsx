@@ -98,7 +98,7 @@ const MovieDetail = ({ movie }: TMovieCard) => {
                     key={index}
                     className={`px-2 py-1 border ${
                       isDarkMode ? "border-white" : "border-light"
-                    } rounded-xl`}
+                    } rounded-xl w-auto`}
                   >
                     {genre.name}
                   </p>
