@@ -30,7 +30,8 @@ Semua gambar pada website sudah menggunakan komponen Image dari nextjs
 
 #SSG, ISR, dan SSR
 - SSG pada routing /, /movieList, /popular, dan /toprated yang statis. Rute-rute ini dipra-render sebagai konten statis selama proses deploy.
-- SSR pada routing ke /movieList/[movieId], /popular/[popularMovieId], dan /ke/toprated/[movieTopratedId] berupa rute dinamis, yang akan dirender di server sesuai permintaan.
+- ISR pada routing ke /popular/[popularMovieId], dan ke/upcoming/[upcomingMovieId] berupa rute dinamis, yang akan dirender di server sesuai permintaan.
+- SSR pada routing ke /movieList/[movieId],
  
 #Metadata (statis dan dinamis), custom error dan loading page, dan error serta loading layout
 Metadata statis pada layout.tsx, dan dinamis menggunakan komponen Metadata dengan memasukkan kata kunci film yang dinamis seperti tittle, overview, keyword berupa genre. 
